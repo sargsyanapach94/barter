@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="views/new_ad/new_ad.css">
+
+<div  ng-controller="new_ad_ctrl">
+	<div >
+		<table>
+			<tr>
+				<th><label>Category:</label></th>
+				<th>
+					<select ng-model="ad.category_kay">
+						<option ng-value="item.id" ng-repeat="item in categories">{{item.name}}</option>
+					</select>
+				</th>
+			</tr>
+			<tr>
+				<th><label>Object name:</label></th>
+				<th><input type="text" ng-model="ad.name"/></th>
+			</tr>
+			<!-- <tr>
+				<th><label>Photo:</label></th>
+				<th><file-upload></file-upload></th>
+			</tr> -->
+			<tr>
+				<th><label>Message:</label></th>
+				<th><textarea type="message" rows="4" cols="22" ng-model="ad.message"></textarea></th>
+			</tr>
+		</table>
+		<button ng-click="save_ad()">Add</button>
+	</div>
+</div>

@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="views/detals/detals.css">
+
+<div id="detals"  ng-controller="detals_ctrl">
+	<div class="row">
+		<figure>
+			<figcaption><h3>{{ad_detals.name}}</h3></figcaption>
+			<img src="#">
+		</figure>
+		<div class="info">
+			<br/>
+			<h4>{{ad_detals.user.name}}</h4>
+			<h5>
+				<span class="location"></span>
+				{{ad_detals.country}} &raquo;
+				{{ad_detals.district}} &raquo;
+				{{ad_detals.city}}
+				<br/>
+				<span class="glyphicon glyphicon-earphone"></span> {{ad_detals.phone}}
+				<br/>
+				<span class="glyphicon glyphicon-envelope"></span> {{ad_detals.email}}
+			</h5>
+		</div>
+		<p>{{ad_detals.message}}</p>
+	</div>
+</div>

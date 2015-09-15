@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="my_app" ng-controller="index_ctrl" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Online Barter</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
+  <link rel="stylesheet" href="app.css">
+
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+  <script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <!--<script src="bower_components/angular-easyfb/angular-easyfb.min.js"></script>
+    <script src="bower_components/angular-easyfb/angular-easyfb.js"></script>-->
+  <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.2.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  
+
+
+  <script src="app.js"></script>
+  <script src="js_components/services/fb_service.js"></script>
+  <script src="js_components/services/ads_service.js"></script>
+  <script src="js_components/services/categories_service.js"></script>
+  <script src="js_components/services/contacts_service.js"></script>
+  <script src="js_components/services/regions_service.js"></script>
+  <script src="js_components/services/users_service.js"></script>
+    <script src="views/home/home_ctrl.js"></script>
+    <script src="views/category/category_ctrl.js"></script>
+    <script src="views/detals/detals_ctrl.js"></script>
+    <script src="views/new_ad/new_ad_ctrl.js"></script>
+    <script src="views/profile/profile_ctrl.js"></script>
+  <script src="js_components/directives.js"></script>
+</head>
+<body>
+  <div>
+    <header class="container">
+      <div class="row">
+        <div class="col-xs-5 col-sm-5 col-md-5">
+          <h1> <a href="#/home">Online Barter</a></h1>
+        </div>
+      </div>
+
+      <nav class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 ">
+          <ul class="menu">
+            <li><a href="#/home"><h4>HOME</h4></a></li>
+            <li>
+              <button ng-click="fb_login()" ng-show="log_button">Log In With Facebook</button>
+              <button ng-hide="log_button" ><a href="#/profile">Profile</a></button>
+              <button ng-click="fb_logout()" ng-hide="log_button">Log out</button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <article  class="container" >
+      <div class="row" ng-show="is_show_registration">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+          <img src="{{form_info.img_url}}">
+          <span>{{form_info.name}}</span>
+          <h3> Please give some contacts information for <b>registration</b> </h3>
+          <form class="form-horizontal " name="updateForm"  role="form">
+              <div class="form-group">
+                <div >
+                  <input class="form-control" id="inputName3" placeholder="Email" ng-model="form_info.email">
+                  <!-- <span ng-show="mailRequired">{{nameRequired}}</span> -->
+                </div>
+              </div>
+              <div class="form-group ">
+                <div >
+                  <select class="col-sm-3 col-md-3 " ng-model="form_info.country">
+                    <option value="Armenia">Armenia</option>
+                  </select>
+                  <select class="col-sm-3 col-md-3 col-md-offset-1 col-sm-offset-1" ng-model="form_info.district">
+                    <option value="{{item.id}}" ng-repeat="item in districts">{{item.district}}</option>
+                  </select>
+                  <input class=" col-sm-4 col-md-4 col-md-offset-1 col-sm-offset-1" ng-model="form_info.city" placeholder="City"/>
+                </div>
+              </div>
+
+              <div class="form-group " ng-controller="index_ctrl">
+                <div class="col-sm-6 col-md-6" >
+                  <p class="input-group" >
+                    <input type="text" class="form-control" ng-model="form_info.date"  datepicker-popup="{{format}}" is-open="opened" min-date="'1915-04-24'" max-date="{{date}}" datepicker-options="dateOptions"  ng-required="false"  />
+                    <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                  </p>
+                </div>
+                <div class="col-sm-6 col-md-6" >
+                  <input class="form-control" id="inputName3" placeholder="Phone" ng-model="form_info.phone">
+                </div>
+              </div>
+
+              <div class="form-group">
+                  <div class="col-md-offset-2 col-md-3">
+                    <button type="submit" ng-click="registration(form_info)"  class="submit btn btn-success">Sign Up With Facebook</button>
+                  </div>
+                  <div class="col-md-offset-2 col-md-3">
+                    <button type="button" ng-click="fb_logout()" class="btn btn-default btn-sm">Cancel</button>
+                  </div>
+              </div>
+          </form>
+        </div>
+      </div>
+
+        <div class="row" ng-hide="is_show_registration">
+          <div id="left" class="col-xs-10 col-sm-10 col-md-10">
+            <div class="row">
+              <div id="category" ng-show="is_show_category" class="col-xs-3 col-sm-3 col-md-3">
+                <h2 ><div class="glyphicon glyphicon-play-circle"></div>Category</h2>
+                <div ng-repeat="item in categories">
+                  <a  href="#category/{{item.id}}">&raquo;{{item.name}}</a>
+                  <br/>
+                </div>
+              </div>
+              <div id="content" class="col-xs-9 col-sm-9 col-md-9" ng-view></div>
+            </div>
+          </div>
+          <div id="right" class="col-xs-2 col-sm-2 col-md-2">
+            <!-- <h3>Search</h3> -->
+            <div id="searsh_by_name">
+              <h4 class="menu"><span class="glyphicon glyphicon-play-circle"></span>Search By Name</h4>
+              <input type="search" ng-change="searsh_by_name()" class="form-control" ng-model="new_search" placeholder="Search...">
+              <dl  ng-show="ads_show">
+                <dt><span class="glyphicon glyphicon-play-circle"></span>Ads</dt>
+                <dd ng-repeat="item in found_ads" >
+                  <hr/>
+                  <span><a href="#detals/{{item.id}}">&raquo; {{item.name}}</a></span>
+                </dd>
+                <hr/>
+                
+              </dl>
+            </div>
+          </div>
+        </div>
+    </article>
+    <!-- <footer class="container"></footer> -->
+  </div>
+
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+</body>
+</html>

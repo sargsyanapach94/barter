@@ -1,0 +1,19 @@
+th:first-child{
+	text-align: left;
+}
+.box{
+	display: inline-table;
+}
+.new_image{
+	width:100px;
+ 	height:100px;
+}
+.progress{
+    height:10px;
+    margin-bottom: 0px;
+    background-color: green;
+ }
+#new_images{
+ 	border:1px solid;
+ 	display: inline-table;
+ }

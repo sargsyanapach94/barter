@@ -1,0 +1,109 @@
+/* app css stylesheet */
+body{
+  background: url(js_components/image/bg_image.jpg) fixed;
+  background-size: 100%;
+  padding-top: 12px;
+}
+header{
+  margin: 8px;
+}
+body div:first-child{
+  border-radius: 8px;
+}
+.container h1{
+  margin:0;
+  padding: 0;
+}
+h1 a{
+  color: #000;
+  text-decoration: none;
+}
+h1 a:hover{
+  color: #6D5C5C;
+  text-decoration: none;
+}
+.container  img{
+  width: 100px;
+  height: 100px;
+}
+nav {
+  background-color: #E4B52C;
+  border-radius: 8px;
+}
+.menu {
+  list-style: none;
+  padding: 0 0 0.5em;
+}
+
+.menu a{
+  color: #FFF;
+}
+.menu > li {
+  display: inline-table;
+}
+
+.menu > li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+.menu > li:nth-child(1):before {
+  content: "";
+  padding: 0;
+}
+.menu li:last-child{
+  float: right;
+  margin-top: 12px;
+}
+.menu button{
+  background-color: #4763B2;
+  border: 1px  #000;
+  border-bottom-style: groove;
+  border-right-style: groove;
+  border-radius: 2px;
+  color: #FFF;
+  height: 20px;
+  width: auto;
+  font-size: 12px;
+}
+article form select option:first-child{
+  color:#A9A9A9;
+}
+button.submit{
+  background-color: #4763B2;
+  border: 1px  #000;
+  border-bottom-style: groove;
+  border-right-style: groove;
+  border-radius: 2px;
+  color: #FFF;
+}
+button.submit:hover{
+  background-color: #647FCA;
+  border-radius: 5px;
+}
+article #left{
+  background-color: #FFF;
+  padding: 1px;
+}
+#left div.row{
+  margin: 0px;
+}
+
+#left div#content{
+  width: 74%;
+  padding: 0;
+}
+
+article #category{
+  background-color: #FDFC6F;
+  margin-top: 8px;
+  margin-left: 8px;
+}
+/*article h2{
+  background-color: #E4B52C;
+  border-radius: 8px;
+}*/
+
+article #category span:hover{
+  cursor: pointer;
+}

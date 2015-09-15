@@ -1,0 +1,29 @@
+#detals{
+	overflow: hidden;
+}
+figure{
+	display: inline-table;
+}
+figure img{
+	min-height: 200px;
+	min-width: 325px;
+	border:1px solid;
+}
+.info{
+	display: inline-table;
+	margin-left: 20px;
+}
+.glyphicon{
+	color: #878787;
+}
+.location{
+	background: url(http://j.list.am/img/psp.png?3) no-repeat -174px 1px;
+    background-size: 200px 108px;
+    height: 16px;
+    float: left;
+    margin: -1px 5px 0 0;
+    padding: 0 4px 0 16px;
+    max-width: 420px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
