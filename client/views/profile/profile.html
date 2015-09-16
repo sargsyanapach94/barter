@@ -7,28 +7,10 @@
 			<img src="{{user.img_url}}"/>
 			<h5>{{contacts.country}} {{contacts.city}}</h5>
 		</div>
-		<div class="fb-follow" data-href="https://www.facebook.com/suren.sargsyan.986" data-layout="standard" data-show-faces="true"></div>
 	</div>
 	<div id="whole">
 		<a href="#/new_ad"><button>Create NEW AD</button></a>
 		
 		<ads-list delete-button="true">My Ads</ads-list>
-		<!-- <table >
-			<tr ng-repeat="item in my_ads">
-				<td>
-					<a href="#detals/{{item.id}}">
-						<figure>
-							<figcaption>{{item.name}}</figcaption>
-							<img src="{{img}}">
-						</figure>
-					</a>
-				</td>
-				<td><p>{{item.message}}</p></td>
-				<td>
-					{{item.date | date:"MM/dd/yyyy "}}
-				</td>
-				<td ><button  id="delete_ad" ng-click="delete(item.id)" title="Do you wanth remove this ad?">X</button></td>
-			</tr>
-		</table> -->
 	</div>
 </div>

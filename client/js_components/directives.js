@@ -2,7 +2,6 @@ myApp.directive('adsList', function () {
     return {      
         restrict: 'AEC',
         template:
-                            // '<div id="image"></div>'+
                 '<table >'+
                     '<h3 ng-transclude></h3>'+
                     '<tr ng-repeat="item in ads">'+
@@ -78,7 +77,7 @@ myApp.directive('fileUpload', function () {
                             };
                         fileReader.readAsDataURL(file);
                         fileReader.onloadend = function(event) {
-                                //console.log(event)
+                                console.log(event)
                             };
                     }
                     else{

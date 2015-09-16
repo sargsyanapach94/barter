@@ -3,7 +3,6 @@
 angular.module('my_app.new_ad', ['ngRoute'])
 
 .controller('new_ad_ctrl', function($scope, $routeParams, $location, users_service, ads_service, categories_service, contacts_service) {
-	
 	$scope.user = users_service.get_user();
 	$scope.ad = {
 			date: new Date(),
@@ -33,8 +32,7 @@ angular.module('my_app.new_ad', ['ngRoute'])
 			.error(function(data){
 				console.log(data)
 			})
-		 console.log($scope.ad)
-	}
+	};
 });
 
      

@@ -99,11 +99,6 @@ article #category{
   margin-top: 8px;
   margin-left: 8px;
 }
-/*article h2{
-  background-color: #E4B52C;
-  border-radius: 8px;
-}*/
-
 article #category span:hover{
   cursor: pointer;
 }

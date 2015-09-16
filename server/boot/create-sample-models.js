@@ -13,7 +13,6 @@ module.exports = function(app) {
               "contacts_kay": "sargsyanapach94@mail.ru",
               "phone": "+374 43303606",
               "image": "",
-              //"id": 0
             },
             {
               "name": "Cat",
@@ -24,7 +23,6 @@ module.exports = function(app) {
               "contacts_kay": "sargsyanapach94@mail.ru",
               "phone": "+374 43303606",
               "image": "",
-              //"id": 0
             },
             {
               "name": "galaxi s4 mini",
@@ -35,7 +33,6 @@ module.exports = function(app) {
               "contacts_kay": "sargsyanapach94@mail.ru",
               "phone": "+374 43303606",
               "image": "",
-              //"id": 0
             },
             {
               "name": "iPhone",
@@ -46,7 +43,6 @@ module.exports = function(app) {
               "contacts_kay": "astxsargsyan96@mail.ru",
               "phone": "+374 55543806",
               "image": "",
-              //"id": 0 
             },
             {
               "name": "Phone",
@@ -57,7 +53,6 @@ module.exports = function(app) {
               "contacts_kay": "astxsargsyan96@mail.ru",
               "phone": "+374 55543806",
               "image": "",
-              //"id": 0
             },
             {
               "name": "TV",

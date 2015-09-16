@@ -9,7 +9,6 @@ myApp.factory('fb_service', function($http, $cookies, $q, users_service) {
           xfbml      : true,
           version    : 'v2.4'
         });
-        //services.fb = FB;
       };
 
     (function(d, s, id){

@@ -27,8 +27,6 @@
   <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
   <script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <!--<script src="bower_components/angular-easyfb/angular-easyfb.min.js"></script>
-    <script src="bower_components/angular-easyfb/angular-easyfb.js"></script>-->
   <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.2.js"></script>
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
   
@@ -56,7 +54,6 @@
           <h1> <a href="#/home">Online Barter</a></h1>
         </div>
       </div>
-
       <nav class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 ">
           <ul class="menu">
@@ -81,9 +78,9 @@
               <div class="form-group">
                 <div >
                   <input class="form-control" id="inputName3" placeholder="Email" ng-model="form_info.email">
-                  <!-- <span ng-show="mailRequired">{{nameRequired}}</span> -->
                 </div>
               </div>
+
               <div class="form-group ">
                 <div >
                   <select class="col-sm-3 col-md-3 " ng-model="form_info.country">
@@ -122,41 +119,39 @@
         </div>
       </div>
 
-        <div class="row" ng-hide="is_show_registration">
-          <div id="left" class="col-xs-10 col-sm-10 col-md-10">
-            <div class="row">
-              <div id="category" ng-show="is_show_category" class="col-xs-3 col-sm-3 col-md-3">
-                <h2 ><div class="glyphicon glyphicon-play-circle"></div>Category</h2>
-                <div ng-repeat="item in categories">
-                  <a  href="#category/{{item.id}}">&raquo;{{item.name}}</a>
-                  <br/>
-                </div>
+      <div class="row" ng-hide="is_show_registration">
+        <div id="left" class="col-xs-10 col-sm-10 col-md-10">
+          <div class="row">
+            <div id="category" ng-show="is_show_category" class="col-xs-3 col-sm-3 col-md-3">
+              <h2 ><div class="glyphicon glyphicon-play-circle"></div>Category</h2>
+              <div ng-repeat="item in categories">
+                <a  href="#category/{{item.id}}">&raquo;{{item.name}}</a>
+                <br/>
               </div>
-              <div id="content" class="col-xs-9 col-sm-9 col-md-9" ng-view></div>
             </div>
-          </div>
-          <div id="right" class="col-xs-2 col-sm-2 col-md-2">
-            <!-- <h3>Search</h3> -->
-            <div id="searsh_by_name">
-              <h4 class="menu"><span class="glyphicon glyphicon-play-circle"></span>Search By Name</h4>
-              <input type="search" ng-change="searsh_by_name()" class="form-control" ng-model="new_search" placeholder="Search...">
-              <dl  ng-show="ads_show">
-                <dt><span class="glyphicon glyphicon-play-circle"></span>Ads</dt>
-                <dd ng-repeat="item in found_ads" >
-                  <hr/>
-                  <span><a href="#detals/{{item.id}}">&raquo; {{item.name}}</a></span>
-                </dd>
-                <hr/>
-                
-              </dl>
-            </div>
+            <div id="content" class="col-xs-9 col-sm-9 col-md-9" ng-view></div>
           </div>
         </div>
+        <div id="right" class="col-xs-2 col-sm-2 col-md-2">
+          <!-- Search -->
+          <div id="searsh_by_name">
+            <h4 class="menu"><span class="glyphicon glyphicon-play-circle"></span>Search By Name</h4>
+            <input type="search" ng-change="searsh_by_name()" class="form-control" ng-model="new_search" placeholder="Search...">
+            <dl  ng-show="ads_show">
+              <dt><span class="glyphicon glyphicon-play-circle"></span>Ads</dt>
+              <dd ng-repeat="item in found_ads" >
+                <hr/>
+                <span><a href="#detals/{{item.id}}">&raquo; {{item.name}}</a></span>
+              </dd>
+              <hr/>
+            </dl>
+          </div>
+        </div>
+      </div>
     </article>
     <!-- <footer class="container"></footer> -->
   </div>
-
-
+  
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->

@@ -6,8 +6,6 @@ var myApp = angular.module('my_app', [
   'ui.bootstrap',
   'ngCookies',
   'ui.bootstrap.datepicker',
-  // 'ezfb',
-  // 'ngFacebook',
   'ngFileUpload',
   'my_app.home',
   'my_app.category',
@@ -15,20 +13,18 @@ var myApp = angular.module('my_app', [
   'my_app.new_ad',
   'my_app.profile'
 ])
-.controller('index_ctrl', function($scope, $location, $cookies, $q, ads_service, categories_service, fb_service, users_service, regions_service, contacts_service) {
-    //var def_in = $q.defer() ,def_out = $q.defer();
+.controller('index_ctrl', function($scope, $location, ads_service, categories_service, fb_service, users_service, regions_service, contacts_service) {
     $scope.ads_show = false;
     $scope.is_show_category = true;
     $scope.is_show_registration = false;
     $scope.new_search = '';
-    
 
     if(!users_service.get_user()){
       $scope.log_button = true;
     }
 
     $scope.fb_login = function(){
-       $scope.is_show_registration = false;
+      $scope.is_show_registration = false;
 
       fb_service.login()
         .then(function(val){
@@ -46,27 +42,20 @@ var myApp = angular.module('my_app', [
 
           $scope.is_show_registration = true;
         });
-      // fb_service.get_picture()
-      //   .then(function(data){
-      //     $scope.form_info = {}|| $scope.form_info;
-      //     console.log(data)
-      //     $scope.img_url = data.url;
-      //   })
     };
 
     $scope.fb_logout = function(){
-        fb_service.logout()
-          .then(function(val){
-            users_service.delete_user();
+      fb_service.logout()
+        .then(function(val){
+          users_service.delete_user();
 
-            $location.path('/home');
-            $scope.log_button = true; 
-            $scope.is_show_registration = false; 
-          });
+          $location.path('/home');
+          $scope.log_button = true; 
+          $scope.is_show_registration = false; 
+        });
     };
 
     $scope.registration = function(data){
-
       var user = {
             name: data.name,
             birth_date: data.date,
@@ -82,6 +71,7 @@ var myApp = angular.module('my_app', [
           };
 
       contacts_service.post(contacts);
+
       users_service.post(user)
         .success(function(data){
           users_service.save_user(data);
@@ -118,10 +108,9 @@ var myApp = angular.module('my_app', [
             });
       }; 
 
+////////////////// date input
+      var tomorrow, afterTomorrow;
 
-
-////////////////// date
-  //(function(){
       $scope.today = function() {
         $scope.date = new Date();
       };
@@ -130,11 +119,6 @@ var myApp = angular.module('my_app', [
       $scope.clear = function () {
         $scope.date = null;
       };
-
-      // Disable weekend selection
-      // $scope.disabled = function(date, mode) {
-      //   return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
-      // };
       
       $scope.open = function($event) {
         $scope.opened = true;
@@ -148,9 +132,9 @@ var myApp = angular.module('my_app', [
       $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
       $scope.format = $scope.formats[2];
 
-      var tomorrow = new Date();
+      tomorrow = new Date();
       tomorrow.setDate(tomorrow.getDate() + 1);
-      var afterTomorrow = new Date();
+      afterTomorrow = new Date();
       afterTomorrow.setDate(tomorrow.getDate() + 2);
       $scope.events =
         [
@@ -179,8 +163,6 @@ var myApp = angular.module('my_app', [
 
         return '';
       };
-  //}());
-
 })
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
