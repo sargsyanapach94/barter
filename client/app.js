@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 var myApp = angular.module('my_app', [
   'ngRoute', 
+  'ngResource',
   'ui.bootstrap',
   'ngCookies',
   'ui.bootstrap.datepicker',
@@ -13,28 +14,65 @@ var myApp = angular.module('my_app', [
   'my_app.new_ad',
   'my_app.profile'
 ])
-.controller('index_ctrl', function($scope, $location, ads_service, categories_service, fb_service, users_service, regions_service, contacts_service) {
+.controller('index_ctrl', function($scope, $location, lg_service, ads_service, categories_service, fb_service, users_service, regions_service, contacts_service) {
     $scope.ads_show = false;
     $scope.is_show_category = true;
     $scope.is_show_registration = false;
     $scope.new_search = '';
+    $scope.page_lg_id = '';
 
     if(!users_service.get_user()){
       $scope.log_button = true;
-    }
+    };
+
+//     lg_service.query()
+//       .success(function(data){
+//         var cookie = lg_service.get();
+//         $scope.lg = data;
+// console.log(cookie)
+
+//         cookie ? $scope.change_lg(cookie.id) : $scope.change_lg(1);
+        
+//       });
+
+    // $scope.change_lg = function(val){
+    //   console.log(val)
+    //   for(var i=0; i<$scope.lg.length; i++){
+    //     if(''+val == $scope.lg[i].id){
+    //       lg_service.post($scope.lg[i]);
+
+    //       categories_service.query(val)
+    //       .success(function(data){
+    //         $scope.categories = data;
+    //       });
+
+    //       $location.path($location.path() + '');
+    //       return;
+    //     }
+    //   }
+    // };
+
+    categories_service.query()
+      .$promise.then(function(data){
+        $scope.categories = data;
+      });
+      
+    // regions_service.query({filter{[where][country]=Armenia}})
+    //   .success(function(data){
+    //    $scope.districts = data;
+    //   });
 
     $scope.fb_login = function(){
-      $scope.is_show_registration = false;
-
       fb_service.login()
         .then(function(val){
-          users_service.save_user(val);
+          console.log(val)
+          users_service.save_user(val[0]);
 
           $location.path('/profile');
           $scope.log_button = false;  
         }, function(val){
 
-          console.log(val)
+          console.log("val")
           $scope.form_info = {};
           $scope.form_info.name = val.name;
           $scope.form_info.img_url = val.img_url;
@@ -52,7 +90,15 @@ var myApp = angular.module('my_app', [
           $location.path('/home');
           $scope.log_button = true; 
           $scope.is_show_registration = false; 
-        });
+        },
+        function(val){
+          users_service.delete_user();
+
+          $location.path('/home');
+          $scope.log_button = true; 
+          $scope.is_show_registration = false;
+        }
+        );
     };
 
     $scope.registration = function(data){
@@ -67,13 +113,15 @@ var myApp = angular.module('my_app', [
             email: data.email,
             phone: data.phone,
             city: data.city,
-            region_kay: data.district
+            district: data.district,
+            country: data.country
           };
 
-      contacts_service.post(contacts);
+      contacts_service.save(contacts);
 
-      users_service.post(user)
-        .success(function(data){
+      users_service.save(user)
+        .$promise.then(function(data){
+          console.log(data)
           users_service.save_user(data);
 
           $location.path('/profile');
@@ -82,30 +130,17 @@ var myApp = angular.module('my_app', [
         });
     };
 
-    
-    categories_service.query()
-      .success(function(data){
-        $scope.categories = data;
-      });
-    regions_service.query('?filter[where][country]=Armenia')
-      .success(function(data){
-       $scope.districts = data;
-      });
-
     $scope.searsh_by_name = function (){
-      var options = [{
-                  name: '[where][name]',
-                  value: $scope.new_search
-              }]
-      ads_service.filter(options)
-            .success(function(data){
-                if(data.length == 0){
-                  $scope.ads_show = false;
-                }else{
-                  $scope.found_ads = data;
-                  $scope.ads_show = true;
-                }
-            });
+      ads_service.query({filter:{ where: {name: $scope.new_search} }})
+        .$promise.then(function(ads) {
+          if(ads.length == 0){
+            $scope.ads_show = false;
+          }else{
+            $scope.found_ads = ads;
+            $scope.ads_show = true;
+          }
+        });
+      
       }; 
 
 ////////////////// date input
@@ -164,15 +199,27 @@ var myApp = angular.module('my_app', [
         return '';
       };
 })
-  .config(['$routeProvider', function($routeProvider) {
+  .config( function($routeProvider) {
+    console.log()
+    //add controller
     $routeProvider
         .when('/home/', {templateUrl: 'views/home/home.html',controller: 'home_ctrl'})
         .when('/detals/:id', {templateUrl: 'views/detals/detals.html',controller: 'detals_ctrl'})
         .when('/category/:id', {templateUrl: 'views/category/category.html',controller: 'category_ctrl'})
         .when('/new_ad/', {templateUrl: 'views/new_ad/new_ad.html',controller: 'new_ad_ctrl'})
-        .when('/profile/', {templateUrl: 'views/profile/profile.html',controller: 'profile_ctrl'})
+        .when('/profile', {templateUrl: 'views/profile/profile.html',controller: 'profile_ctrl',
+      redirectTo: function(routeParams, path, search){
+        console.log(routeParams)
+        console.log(path)
+        console.log(search)
+        if (!+(routeParams.id))
+        console.log("not a number") // is :id a number?
+            return ;
+    }})
         .otherwise({redirectTo: '/home/'});
-  }]);
+  });
 
      
- 
+ //node oauth 2 server
+
+ //

@@ -10,11 +10,14 @@
       "type": "string",
       "required": true
     },
-    "phone": {
+    "country": {
       "type": "string"
     },
-    "region_kay": {
-      "type": "number"
+    "district": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
     },
     "city": {
       "type": "string"

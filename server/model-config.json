@@ -13,7 +13,6 @@
       "./mixins"
     ]
   },
-
   "AccessToken": {
     "dataSource": "db",
     "public": false
@@ -45,7 +44,7 @@
     "dataSource": "mysqlDs",
     "public": true
   },
-  "phone": {
+  "tr_category": {
     "dataSource": "mysqlDs",
     "public": true
   },
@@ -54,6 +53,14 @@
     "public": true
   },
   "category": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "tr_contacts": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "tr_user": {
     "dataSource": "mysqlDs",
     "public": true
   }

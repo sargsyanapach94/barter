@@ -7,9 +7,10 @@ module.exports = function(app) {
             {
               "name": "Dog",
               "message": "adafs ascsd scsd vsdv",
-              "category_kay": 1,
+              "category_kay": "animals",
               "user_id": "827603344024096",
-              "date": new Date(),
+              "date": new Date(2015,1,8),
+              "user_name": "Suren Sargsyan",
               "contacts_kay": "sargsyanapach94@mail.ru",
               "phone": "+374 43303606",
               "image": "",
@@ -17,9 +18,10 @@ module.exports = function(app) {
             {
               "name": "Cat",
               "message": "Knvirem katvis. Spitak ev sev gujni. 5 tarekan , lav muka brnum. Pntrum em hogatar mardkanc. adafs ascsd scsd vsdv",
-              "category_kay": 1,
+              "category_kay": "animals",
               "user_id": "827603344024096",
-              "date": new Date(),
+              "date": new Date(2014,9,8),
+              "user_name": "Suren Sargsyan",
               "contacts_kay": "sargsyanapach94@mail.ru",
               "phone": "+374 43303606",
               "image": "",
@@ -27,9 +29,10 @@ module.exports = function(app) {
             {
               "name": "galaxi s4 mini",
               "message": "adafs ascsd scsd vsdv",
-              "category_kay": 2,
+              "category_kay": "electronics",
               "user_id": "827603344024096",
-              "date": new Date(),
+              "date": new Date(2015,1,2),
+              "user_name": "Suren Sargsyan",
               "contacts_kay": "sargsyanapach94@mail.ru",
               "phone": "+374 43303606",
               "image": "",
@@ -37,30 +40,33 @@ module.exports = function(app) {
             {
               "name": "iPhone",
               "message": "iphone 4s Asacss ascsd, askcb scsd vsdv",
-              "category_kay": 2,
-              "user_id": "1681648378735735",
-              "date": new Date(),
-              "contacts_kay": "astxsargsyan96@mail.ru",
+              "category_kay": "electronics",
+              "user_id": "1681648378735000",
+              "date": new Date(2015,1,1),
+              "user_name": "Lusine Sargsyan",
+              "contacts_kay": "lusinsargsyan96@mail.ru",
               "phone": "+374 55543806",
               "image": "",
             },
             {
               "name": "Phone",
               "message": "galaxi s4 Asacss ascsd, askcb scsd vsdv",
-              "category_kay": 2,
-              "user_id": "1681648378735735",
-              "date": new Date(),
-              "contacts_kay": "astxsargsyan96@mail.ru",
+              "category_kay": "electronics",
+              "user_id": "1681648378735000",
+              "date": new Date(2013,5,5),
+              "user_name": "Lusine Sargsyan",
+              "contacts_kay": "lusinsargsyan96@mail.ru",
               "phone": "+374 55543806",
               "image": "",
             },
             {
               "name": "TV",
               "message": "newMes dckcdcj cje cje sages",
-              "category_kay": 2,
-              "date": "2015-09-08T18:34:45.000Z",
-              "contacts_kay": "astxsargsyan96@mail.ru",
-              "user_id": "1681648378735735",
+              "category_kay": "electronics",
+              "date": new Date(2012,6,15),
+              "user_name": "Lusine Sargsyan",
+              "contacts_kay": "lusinsargsyan96@mail.ru",
+              "user_id": "1681648378735000",
               "phone": "+374 55543806",
               "image": null,
               
@@ -68,10 +74,11 @@ module.exports = function(app) {
             {
               "name": "laptop",
               "message": "ne kjcds sdjck jdskcbsd wMes dckcdcj cje cje sages",
-              "category_kay": 2,
-              "date": "2015-09-08T18:34:45.000Z",
-              "contacts_kay": "astxsargsyan96@mail.ru",
-              "user_id": "1681648378735735",
+              "category_kay": "electronics",
+              "date": new Date(2012,12,15),
+              "user_name": "Lusine Sargsyan",
+              "contacts_kay": "lusinsargsyan96@mail.ru",
+              "user_id": "1681648378735000",
               "phone": "+374 55543806",
               //"image": null,
               
@@ -95,13 +102,34 @@ module.exports = function(app) {
           "user_id": "827603344024096" 
                   },
         {
-          "name": "Astxik Sargsyan",
+          "name": "Lusine Sargsyan",
           "birth_date": new Date(1996,05,12),
           "img_url": "",
-          "contacts_kay": "astxsargsyan96@mail.ru",
-          "user_id": "1681648378735735"
+          "contacts_kay": "lusinsargsyan96@mail.ru",
+          "user_id": "1681648378735000"
                   }
       ], function(err, users) {
+      if (err) throw err;
+
+      //console.log('Models created: \n', subscribers);
+    });
+  });
+
+  app.dataSources.mysqlDs.automigrate('tr_user', function(err) {
+    if (err) throw err;
+
+    app.models.tr_user.create([
+        {
+          "name": "Սուրեն Սարգսյան",
+          "lg_kay": "arm",
+          "user_id": "827603344024096" 
+                  },
+        {
+          "name": "Լուսինե Սարգսյան",
+          "lg_kay": "arm",
+          "user_id": "1681648378735000"
+                  }
+      ], function(err, tr_users) {
       if (err) throw err;
 
       //console.log('Models created: \n', subscribers);
@@ -114,17 +142,58 @@ module.exports = function(app) {
     app.models.contacts.create([
         {
           "email": "sargsyanapach94@mail.ru",
-          "region_kay": 2,
+          "country": "Armenia",
+          "district": "Kotayq",
           "city": "Nor Hachn",
-          "phone": "+374 43303606",
+          "phone": "+374 43303606"
                   },
         {
-          "email": "astxsargsyan96@mail.ru",
-          "region_kay": 3,
-          "city": "Gavar",
-          "phone": "+374 055485193",
+          "email": "lusinsargsyan96@mail.ru",
+          "country": "Armenia",
+          "district": "Lori",
+          "city": "Vanadzor",
+          "phone": "+374 055485193"
                   }
       ], function(err, contacts) {
+      if (err) throw err;
+
+      //console.log('Models created: \n', contacts);
+    });
+  });
+
+  app.dataSources.mysqlDs.automigrate('tr_contacts', function(err) {
+    if (err) throw err;
+
+    app.models.tr_contacts.create([
+        {
+          "lg_kay": "eng",
+          "contact_kay": "lusinsargsyan96@mail.ru",
+          "country": "Armenia",
+          "district": "Kotayq",
+          "city": "Nor Hachn"
+                  },
+        {
+          "lg_kay": "eng",
+          "contact_kay": "lusinsargsyan96@mail.ru",
+          "country": "Armenia",
+          "district": "Lori",
+          "city": "Vanadzor"
+                  },
+        {
+          "lg_kay": "arm",
+          "contact_kay": "lusinsargsyan96@mail.ru",
+          "country": "Հայաստան",
+          "district": "Կոտայք",
+          "city": "Նոր Հաճն"
+                  },
+        {
+          "lg_kay": "arm",
+          "contact_kay": "lusinsargsyan96@mail.ru",
+          "country": "Հայաստան",
+          "district": "Լոռի",
+          "city": "Վանաձոր"
+                  }
+      ], function(err, tr_contacts) {
       if (err) throw err;
 
       //console.log('Models created: \n', contacts);
@@ -135,8 +204,8 @@ module.exports = function(app) {
     if (err) throw err;
 
     app.models.language.create([
-        {"name": "Armenian"},
-        {"name": "English"},
+        {"name": "Armenian", "short_name": "arm"},
+        {"name": "English", "short_name": "eng"},
       ], function(err, languages) {
       if (err) throw err;
 
@@ -148,17 +217,30 @@ module.exports = function(app) {
     if (err) throw err;
 
     app.models.region.create([
-        {"district": "Erevan","country": "Armenia", "id": 1},
-        {"district": "Kotayq","country": "Armenia", "id": 2},
-        {"district": "Gexarquniq","country": "Armenia", "id": 3},
-        {"district": "Shirak","country": "Armenia", "id": 4},
-        {"district": "Lori","country": "Armenia", "id": 5},
-        {"district": "Tavush","country": "Armenia", "id": 6},
-        {"district": "Aragatotn","country": "Armenia", "id": 7},
-        {"district": "Armavir","country": "Armenia", "id": 8},
-        {"district": "Ararat","country": "Armenia", "id": 9},
-        {"district": "Vayoc Dzor","country": "Armenia", "id": 10},
-        {"district": "Syuniq","country": "Armenia", "id": 11},
+      //English
+        {"district": "Erevan","country": "Armenia", "region_id": 1, "lg_kay": 1},
+        {"district": "Kotayq","country": "Armenia", "region_id": 2, "lg_kay": 1},
+        {"district": "Gexarquniq","country": "Armenia", "region_id": 3, "lg_kay": 1},
+        {"district": "Shirak","country": "Armenia", "region_id": 4, "lg_kay": 1},
+        {"district": "Lori","country": "Armenia", "region_id": 5, "lg_kay": 1},
+        {"district": "Tavush","country": "Armenia", "region_id": 6, "lg_kay": 1},
+        {"district": "Aragatotn","country": "Armenia", "region_id": 7, "lg_kay": 1},
+        {"district": "Armavir","country": "Armenia", "region_id": 8, "lg_kay": 1},
+        {"district": "Ararat","country": "Armenia", "region_id": 9, "lg_kay": 1},
+        {"district": "Vayoc Dzor","country": "Armenia", "region_id": 10, "lg_kay": 1},
+        {"district": "Syuniq","country": "Armenia", "region_id": 11, "lg_kay": 1},
+        // Հայերեն
+        {"district": "Երևան","country": "Հայաստան", "region_id": 1, "lg_kay":2},
+        {"district": "Կոտայք","country": "Հայաստան", "region_id": 2, "lg_kay":2},
+        {"district": "Գեղարքունիք","country": "Հայաստան", "region_id": 3, "lg_kay":2},
+        {"district": "Շիրակ","country": "Հայաստան", "region_id": 4, "lg_kay":2},
+        {"district": "Լոռի","country": "Հայաստան", "region_id": 5, "lg_kay":2},
+        {"district": "Տավուշ","country": "Հայաստան", "region_id": 6, "lg_kay":2},
+        {"district": "Արագածոտն","country": "Հայաստան", "region_id": 7, "lg_kay":2},
+        {"district": "Արմավիր","country": "Հայաստան", "region_id": 8, "lg_kay":2},
+        {"district": "Արարատ","country": "Հայաստան", "region_id": 9, "lg_kay":2},
+        {"district": "Վայոց Ձոր","country": "Հայաստան", "region_id": 10, "lg_kay":2},
+        {"district": "Սյունիք","country": "Հայաստան", "region_id": 11, "lg_kay":2},
       ], function(err, countrys) {
       if (err) throw err;
 
@@ -166,32 +248,60 @@ module.exports = function(app) {
     });
   });
 
-  app.dataSources.mysqlDs.automigrate('phone', function(err) {
+  // app.dataSources.mysqlDs.automigrate('tr_page', function(err) {
+  //   var words = [];
+  //   if (err) throw err;
+    
+  //   words = [
+  //           {
+  //             "online_barter": "Օնլայն Բարտեր",
+  //             "home":"Գլխավոր էջ",
+
+  //           }
+  //           ]
+  //   app.models.tr_page.create([
+  //       {
+  //         "lg_kay": 2,
+  //         "name":"/home",
+  //         "words": JSON.stringify(words[0]),
+  //       }
+  //       // {
+  //       //   "number": "+374 55543806",
+  //       //   "log_in":"astx"
+  //       // }
+  //     ], function(err, tr_pages) {
+  //     if (err) throw err;
+
+  //     //console.log('Models created: \n', subscribers);
+  //   });
+  // });
+
+  app.dataSources.mysqlDs.automigrate('category', function(err) {
     if (err) throw err;
 
-    app.models.phone.create([
-        {
-          "number": "+374 43303606",
-          "log_in":"suren"
-        },
-        {
-          "number": "+374 55543806",
-          "log_in":"astx"
-        }
-      ], function(err, phones) {
+    app.models.category.create([
+        {"name": "animals"},
+        {"name": "electronics"}
+      ], function(err, categories) {
       if (err) throw err;
 
       //console.log('Models created: \n', subscribers);
     });
   });
 
-  app.dataSources.mysqlDs.automigrate('category', function(err) {
+  app.dataSources.mysqlDs.automigrate('tr_category', function(err) {
     if (err) throw err;
 
-    app.models.category.create([
-        {"name": "Animals", "id":1},
-        {"name": "Electronics", "id":2}
-      ], function(err, categories) {
+    app.models.tr_category.create([
+        // English
+        {"lg_kay": "arm", "name": "Կենդանիներ", "category_kay": "animals"},
+        {"lg_kay": "arm", "name": "Էլեկտրոնիկա", "category_kay": "electronics"},
+
+        // Հայերեն
+        {"lg_kay": "eng", "name": "animals", "category_kay": "animals"},
+        {"lg_kay": "eng", "name": "electronics", "category_kay": "electronics"},
+
+      ], function(err, tr_categories) {
       if (err) throw err;
 
       //console.log('Models created: \n', subscribers);

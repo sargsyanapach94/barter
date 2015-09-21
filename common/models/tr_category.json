@@ -1,18 +1,21 @@
 {
-  "name": "phone",
+  "name": "tr_category",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "number": {
+    "lg_kay": {
       "type": "string",
       "required": true
     },
-    "log_in": {
+    "name": {
       "type": "string",
       "required": true
+    },
+    "category_kay": {
+      "type": "string"
     }
   },
   "validations": [],

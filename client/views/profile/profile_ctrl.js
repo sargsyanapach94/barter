@@ -2,38 +2,28 @@
 
 angular.module('my_app.profile', ['ngRoute'])
 
-.controller('profile_ctrl', function($scope, $routeParams, users_service, ads_service, contacts_service, regions_service ) {
-	var options;
+.controller('profile_ctrl', function($scope, $rootScope, $routeParams, users_service, ads_service, contacts_service, regions_service ) {
+	
 	$scope.user = users_service.get_user();
 
-  	options = [{
-				name: '[where][user_id]',
-				value: $scope.user.user_id
-				}];
-
-  	ads_service.filter(options)
-	  	.success(function(data){
+  	ads_service.query({filter:{where:{user_id: $scope.user.user_id}, order :"date DESC"}})
+	  	.$promise.then(function(data){
 	  		$scope.ads = data;
 	  	});
 	  	
-  	contacts_service.get($scope.user.contacts_kay)
-  		.success(function(data){
-			$scope.contacts = data;
-
-			regions_service.get(data.region_kay)
-				.success(function(data){
-					$scope.contacts.country = data.country;
-					$scope.contacts.district = data.district;
-				});
-		});
+  	contacts_service.query({filter:{where:{email: $scope.user.contacts_kay}}})
+    	.$promise.then(function(data){
+    		$scope.contacts = data[0];
+    	});
 
 	$scope.delete = function(id){
-		ads_service.delete(id).success(function(){
-			ads_service.filter(options)
-			  	.success(function(data){
-			  		$scope.ads = data;
-			  	});
-		})
+		ads_service.remove({id: id})
+			.$promise.then(function(data){
+				ads_service.query({filter:{where:{user_id: $scope.user.user_id}}})
+				  	.$promise.then(function(data){
+				  		$scope.ads = data;
+				  	});
+			})
 	};
 });
 

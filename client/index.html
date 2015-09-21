@@ -12,39 +12,46 @@
     
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
   <link rel="stylesheet" href="app.css">
 
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
   <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
   <script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+
   <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.2.js"></script>
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
   
 
 
   <script src="app.js"></script>
+  <script src="js_components/services/lg_service.js"></script>
   <script src="js_components/services/fb_service.js"></script>
   <script src="js_components/services/ads_service.js"></script>
   <script src="js_components/services/categories_service.js"></script>
   <script src="js_components/services/contacts_service.js"></script>
   <script src="js_components/services/regions_service.js"></script>
   <script src="js_components/services/users_service.js"></script>
-    <script src="views/home/home_ctrl.js"></script>
-    <script src="views/category/category_ctrl.js"></script>
-    <script src="views/detals/detals_ctrl.js"></script>
-    <script src="views/new_ad/new_ad_ctrl.js"></script>
-    <script src="views/profile/profile_ctrl.js"></script>
-  <script src="js_components/directives.js"></script>
+
+  <script src="views/home/home_ctrl.js"></script>
+  <script src="views/category/category_ctrl.js"></script>
+  <script src="views/detals/detals_ctrl.js"></script>
+  <script src="views/new_ad/new_ad_ctrl.js"></script>
+  <script src="views/profile/profile_ctrl.js"></script>
+
+  <script src="js_components/directives/items_list.js"></script>
 </head>
 <body>
   <div>
@@ -64,6 +71,9 @@
               <button ng-click="fb_logout()" ng-hide="log_button">Log out</button>
             </li>
           </ul>
+          <select ng-change="change_lg(page_lg_id)" ng-model="page_lg_id">
+            <option value="{{item.id}}" ng-repeat="item in lg">{{item.name}}</option>
+          </select>
         </div>
       </nav>
     </header>
@@ -71,7 +81,7 @@
     <article  class="container" >
       <div class="row" ng-show="is_show_registration">
         <div class="col-xs-6 col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-          <img src="{{form_info.img_url}}">
+          <img src="">
           <span>{{form_info.name}}</span>
           <h3> Please give some contacts information for <b>registration</b> </h3>
           <form class="form-horizontal " name="updateForm"  role="form">
@@ -86,9 +96,20 @@
                   <select class="col-sm-3 col-md-3 " ng-model="form_info.country">
                     <option value="Armenia">Armenia</option>
                   </select>
-                  <select class="col-sm-3 col-md-3 col-md-offset-1 col-sm-offset-1" ng-model="form_info.district">
-                    <option value="{{item.id}}" ng-repeat="item in districts">{{item.district}}</option>
-                  </select>
+                  <!-- <select class="col-sm-3 col-md-3 col-md-offset-1 col-sm-offset-1" ng-model="form_info.district">
+                    <option value="{{item.id}}" >Kotayq</option>
+                    <option value="{{item.id}}" >Yerevan</option>
+                    <option value="{{item.id}}" >Gexarquniq</option>
+                    <option value="{{item.id}}" >Kotayq</option>
+                    <option value="{{item.id}}" >Kotayq</option>
+                    <option value="{{item.id}}" >Kotayq</option>
+                    <option value="{{item.id}}" >Kotayq</option>
+                    <option value="{{item.id}}" >Kotayq</option>
+                    <option value="{{item.id}}" >Kotayq</option>
+                    <option value="{{item.id}}" >Kotayq</option>
+                    <option value="{{item.id}}" >Kotayq</option>
+                  </select> -->
+                  <input class="col-sm-3 col-md-3 col-md-offset-1 col-sm-offset-1" ng-model="form_info.district" placeholder="District"/>
                   <input class=" col-sm-4 col-md-4 col-md-offset-1 col-sm-offset-1" ng-model="form_info.city" placeholder="City"/>
                 </div>
               </div>
@@ -125,7 +146,7 @@
             <div id="category" ng-show="is_show_category" class="col-xs-3 col-sm-3 col-md-3">
               <h2 ><div class="glyphicon glyphicon-play-circle"></div>Category</h2>
               <div ng-repeat="item in categories">
-                <a  href="#category/{{item.id}}">&raquo;{{item.name}}</a>
+                <a  href="#category/{{item.name}}">&raquo;{{item.name}}</a>
                 <br/>
               </div>
             </div>

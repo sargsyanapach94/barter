@@ -1,5 +1,5 @@
 {
-  "name": "region",
+  "name": "tr_user",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -10,15 +10,11 @@
       "type": "string",
       "required": true
     },
-    "region_id": {
-      "type": "number",
-      "required": true
-    },
-    "district": {
+    "user_id": {
       "type": "string",
       "required": true
     },
-    "country": {
+    "name": {
       "type": "string",
       "required": true
     }

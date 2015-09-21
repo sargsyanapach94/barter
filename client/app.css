@@ -1,6 +1,6 @@
 /* app css stylesheet */
 body{
-  background: url(js_components/image/bg_image.jpg) fixed;
+  background: url(images/bg_image.jpg) fixed;
   background-size: 100%;
   padding-top: 12px;
 }
@@ -9,6 +9,11 @@ header{
 }
 body div:first-child{
   border-radius: 8px;
+}
+
+header select{
+  float: right;
+  width: 25px;
 }
 .container h1{
   margin:0;

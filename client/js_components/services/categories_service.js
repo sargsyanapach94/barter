@@ -1,8 +1,12 @@
-myApp.factory('categories_service', function($http) {
-    var url = 'http://localhost:3000/onlineBarter/categories/',
+myApp.factory('categories_service', function($resource) {
+    var url = 'http://localhost:3000/onlineBarter/categories';
+    var resource = $resource(url);
 
-    services = {
+    var services = {
         query: function() {
+            
+                // return $http.get(url + '?filter[where][lg_id]=' + (lg || '1'))
+            
             return $http.get(url); 
         },
         get: function(id) {
@@ -10,5 +14,5 @@ myApp.factory('categories_service', function($http) {
         }
     };
     
-    return services;    
+    return resource;    
 })

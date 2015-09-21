@@ -15,32 +15,7 @@
 	color: #717148;
 }
 
-table{
-	width: 100%
-}
-table tr{
-	border:1px solid;
-	border-radius: 8px;
-}
-table td figcaption{
-	text-align: center;
-}
-table td:first-child img{
-    width: 160px;
-    height: 120px;
-}
-table td:nth-child(2){
-	padding-left: 3px;
-}
-table td:last-child{
-	padding-bottom: 118px;
-	width: 11px;
-}
 
-#delete_ad{
-    font-weight: 800;
-	color: #E44B4B;
-},
 
 
 

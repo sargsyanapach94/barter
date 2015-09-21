@@ -1,7 +1,8 @@
-myApp.factory('contacts_service', function($http) {
-    var url = 'http://localhost:3000/onlineBarter/contacts/',
+myApp.factory('contacts_service', function($resource) {
+    var url = 'http://localhost:3000/onlineBarter/contacts/';
+    var resource = $resource(url);
 
-    services = {
+     var services = {
         query: function() {
             return $http.get(url); 
         },
@@ -13,5 +14,5 @@ myApp.factory('contacts_service', function($http) {
         }
     };
     
-    return services;    
+    return resource;    
 })

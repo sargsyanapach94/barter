@@ -1,0 +1,19 @@
+<div id="items_list">
+	<link rel="stylesheet" href="js_components/directives/items_list.css">
+    <table >
+        <h3 ng-transclude></h3>
+        <tr ng-repeat="item in ads">
+            <td>
+                <a href="#detals/{{item.id}}">
+                    <figure>
+                        <figcaption>{{item.name}}</figcaption>
+                        <img src="">
+                    </figure>
+                </a>
+            </td>
+            <td><p>{{item.message}}</p></td>
+            <td>{{item.date | date:"MM/dd/yyyy "}}</td>
+            <td ng-show="{{del_btn}}"><button  id="delete_ad" ng-click="delete(item.id)" title="Do you wanth remove this ad?">X</button></td>
+        </tr>
+    </table>
+</div>

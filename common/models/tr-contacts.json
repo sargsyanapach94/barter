@@ -1,5 +1,5 @@
 {
-  "name": "region",
+  "name": "tr_contacts",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -10,17 +10,19 @@
       "type": "string",
       "required": true
     },
-    "region_id": {
-      "type": "number",
-      "required": true
-    },
-    "district": {
+    "contact_kay": {
       "type": "string",
       "required": true
     },
     "country": {
       "type": "string",
       "required": true
+    },
+    "district": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
     }
   },
   "validations": [],

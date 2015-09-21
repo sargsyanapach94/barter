@@ -14,7 +14,7 @@
       "type": "string"
     },
     "category_kay": {
-      "type": "number",
+      "type": "string",
       "required": true
     },
     "date": {
@@ -26,6 +26,10 @@
       "required": true
     },
     "user_id": {
+      "type": "string",
+      "required": true
+    },
+    "user_name": {
       "type": "string",
       "required": true
     },

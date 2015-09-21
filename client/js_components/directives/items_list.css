@@ -1,0 +1,39 @@
+/*#items_list{
+	border: 1px solid;
+}*/
+#items_list table{
+	width: auto
+}
+#items_list table tr{
+	border:1px solid;
+	border-radius: 8px;
+}
+#items_list table td figcaption{
+	text-align: center;
+}
+#items_list table td:first-child{
+    width: 160px;
+    height: 150px;
+}
+#items_list table td:first-child img{
+    width: 160px;
+    height: 120px;
+}
+#items_list table td:nth-child(2) {
+	padding-left: 3px;
+	width: 100%;
+}
+/*table td:nth-child(2) p{
+	width: 100px;
+}*/
+#items_list table td:nth-child(3){
+	width: 72px;
+}
+#items_list table td:last-child{
+	padding-bottom: 118px;
+	width: 11px;
+}
+#items_list #delete_ad{
+    font-weight: 800;
+	color: #E44B4B;
+}

@@ -8,15 +8,16 @@ angular.module('my_app.new_ad', ['ngRoute'])
 			date: new Date(),
 			contacts_kay: $scope.user.contacts_kay,
 			user_id: $scope.user.user_id,
+			user_name: $scope.user.name
 		};
 
-	contacts_service.get($scope.user.contacts_kay)
-		.success(function(data){
+	contacts_service.query({filter:{where:{email: $scope.user.contacts_kay}}})
+		.$promise.then(function(data){
 			$scope.contacts = data;
 			$scope.ad.phone = data.phone;
 		});
 	categories_service.query()
-	    .success(function(data){
+	    .$promise.then(function(data){
 	        $scope.categories = data;
 	    });
 
@@ -25,11 +26,12 @@ angular.module('my_app.new_ad', ['ngRoute'])
 	$scope.save_ad = function(){
 		$scope.ad.image = $scope.img_src;
 
-		ads_service.post($scope.ad)
-			.success(function(data){
+		ads_service.save($scope.ad)
+			.$promise.then(function(data){
+				console.log(data)
 				$location.path('/profile');
-			})
-			.error(function(data){
+			},
+			function(data){
 				console.log(data)
 			})
 	};

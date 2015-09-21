@@ -1,5 +1,5 @@
-myApp.factory('fb_service', function($http, $cookies, $q, users_service) {
-    var my_cookies = $cookies.get('user');
+myApp.factory('fb_service', function($http, $q, users_service) {
+    
 
     window.fbAsyncInit = function() {
         FB.init({
@@ -39,12 +39,13 @@ myApp.factory('fb_service', function($http, $cookies, $q, users_service) {
 
           FB.login(function(res) {
              if (res.status == 'connected') {
-                users_service.get(res.authResponse.userID)
-                  .success(function(data) {
-                    def.resolve(data);
-                  })
-                  .error(function(data){
-                    FB.api('/me',function(data){
+                users_service.query({filter:{where:{user_id: res.authResponse.userID}}} )
+                  .$promise.then(function(data) {
+                    if(data.length){
+                      def.resolve(data);
+                    }
+                    else{
+                      FB.api('/me',function(data){
                       get_picture()
                         .then(function(img){
                           data.img_url = img.url;
@@ -52,6 +53,7 @@ myApp.factory('fb_service', function($http, $cookies, $q, users_service) {
                         })
                       
                     })
+                    }
                   }) 
              } 
              else {
@@ -65,9 +67,9 @@ myApp.factory('fb_service', function($http, $cookies, $q, users_service) {
           var def = $q.defer();
 
           FB.logout(function(res){
-            def.resolve('logout');
           });
 
+            def.resolve('logout');
           return def.promise;
         },
         get_picture: get_picture,

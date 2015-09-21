@@ -1,4 +1,4 @@
-myApp.factory('regions_service', function($http) {
+myApp.factory('regions_service', function($resource) {
     var url = 'http://localhost:3000/onlineBarter/regions/',
 
     services = {

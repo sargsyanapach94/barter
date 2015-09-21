@@ -1,28 +1,12 @@
 myApp.directive('adsList', function () {
     return {      
         restrict: 'AEC',
-        template:
-                '<table >'+
-                    '<h3 ng-transclude></h3>'+
-                    '<tr ng-repeat="item in ads">'+
-                        '<td>'+
-                            '<a href="#detals/{{item.id}}">'+
-                                '<figure>'+
-                                    '<figcaption>{{item.name}}</figcaption>'+
-                                    '<img src="{{item_image}}">'+
-                                '</figure>'+
-                            '</a>'+
-                        '</td>'+
-                        '<td><p>{{item.message}}</p></td>'+
-                        '<td>{{item.date | date:"MM/dd/yyyy "}}</td>'+
-                        '<td ng-show="{{del_btn}}"><button  id="delete_ad" ng-click="delete(item.id)" title="Do you wanth remove this ad?">X</button></td>'+
-                    '</tr>'+
-                '</table>',
+        templateUrl:'js_components/directives/items_list.html',
         transclude: true,
         replace:false,
         link: function ($scope, el, attrs) {
             $scope.del_btn = false;
-            console.log(attrs)
+            
             if(attrs.deleteButton && attrs.deleteButton === 'true'){
                 $scope.del_btn = true;
             }
