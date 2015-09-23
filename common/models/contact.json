@@ -1,42 +1,44 @@
 {
-  "name": "user",
+  "name": "contact",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "name": {
-      "type": "string",
-      "required": true
-    },
-    "birth_date": {
-      "type": "date"
-    },
     "email": {
       "type": "string",
+      "id":2,
       "required": true
-    },
-    "img_url": {
-      "type": "string"
     },
     "user_id": {
       "type": "string",
-      "id": 1,
       "required": true
+    },
+    "country": {
+      "type": "string"
+    },
+    "district": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
     }
   },
   "validations": [],
   "relations": {
-    "ads": {
+    "users": {
+        "type": "belongsTo",
+        "model": "user",
+        "foreignKey": "user_id"
+      },
+      "ads": {
       "type": "hasMany",
       "model": "ad",
-      "foreignKey": "user_id"
-    },
-    "contacts": {
-      "type": "hasMany",
-      "model": "contact",
-      "foreignKey": "user_id"
+      "foreignKey": "email"
     }
     },
   "acls": [
@@ -44,25 +46,30 @@
       "accessType": "*",
       "principalType": "ROLE",
       "principalId": "$everyone",
-      "permission": "DENY"
-    },
-    {
-      "accessType": "EXECUTE",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
       "permission": "ALLOW"
-    },
-    {
-      "accessType": "READ",
-      "principalType": "ROLE",
-      "principalId": "$authenticated",
-      "permission": "ALLOW",
-      "property": "listProjects"
     },
     {
       "accessType": "WRITE",
       "principalType": "ROLE",
       "principalId": "$unauthenticated",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "custom roles",
       "permission": "ALLOW"
     }
   ],

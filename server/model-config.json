@@ -34,13 +34,13 @@
     "public": true
   },
   "user": {
-    "dataSource": "mysqlDs"
+    "dataSource": "mysqlDs",
+    "options": {
+      "realmRequired": true,
+      "realmDelimiter": ":"
+    }
   },
   "language": {
-    "dataSource": "mysqlDs",
-    "public": true
-  },
-  "region": {
     "dataSource": "mysqlDs",
     "public": true
   },
@@ -48,7 +48,7 @@
     "dataSource": "mysqlDs",
     "public": true
   },
-  "contacts": {
+  "contact": {
     "dataSource": "mysqlDs",
     "public": true
   },

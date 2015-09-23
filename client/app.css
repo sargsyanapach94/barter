@@ -34,6 +34,10 @@ h1 a:hover{
 nav {
   background-color: #E4B52C;
   border-radius: 8px;
+
+  -webkit-box-shadow: inset 90px 59px 106px -44px rgba(251,249,72,1);
+  -moz-box-shadow: inset 90px 59px 106px -44px rgba(251,249,72,1);
+  box-shadow: inset 90px 59px 106px -44px rgba(251,249,72,1);
 }
 .menu {
   list-style: none;
@@ -86,6 +90,9 @@ button.submit:hover{
   background-color: #647FCA;
   border-radius: 5px;
 }
+article span.warning{
+  color: red;
+}
 article #left{
   background-color: #FFF;
   padding: 1px;
@@ -103,6 +110,10 @@ article #category{
   background-color: #FDFC6F;
   margin-top: 8px;
   margin-left: 8px;
+
+  -webkit-box-shadow: inset 90px 59px 106px -44px rgba(251,249,72,1);
+  -moz-box-shadow: inset 90px 59px 106px -44px rgba(251,249,72,1);
+  box-shadow: inset 90px 59px 106px -44px rgba(251,249,72,1);
 }
 article #category span:hover{
   cursor: pointer;

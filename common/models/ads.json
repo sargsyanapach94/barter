@@ -13,7 +13,7 @@
     "message": {
       "type": "string"
     },
-    "category_kay": {
+    "category_key": {
       "type": "string",
       "required": true
     },
@@ -21,7 +21,7 @@
       "type": "date",
       "required": true
     },
-    "contacts_kay": {
+    "email": {
       "type": "string",
       "required": true
     },
@@ -41,7 +41,49 @@
     }
   },
   "validations": [],
-  "relations": {},
-  "acls": [],
+  "relations": {
+      "users": {
+        "type": "belongsTo",
+        "model": "user",
+        "foreignKey": "user_id"
+      },
+      "contacts": {
+        "type": "belongsTo",
+        "model": "contact",
+        "foreignKey": "email"
+      }
+    },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "custom roles",
+      "permission": "ALLOW"
+    }
+  ],
   "methods": {}
 }

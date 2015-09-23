@@ -6,29 +6,25 @@ angular.module('my_app.new_ad', ['ngRoute'])
 	$scope.user = users_service.get_user();
 	$scope.ad = {
 			date: new Date(),
-			contacts_kay: $scope.user.contacts_kay,
+			email: $scope.user.email,
 			user_id: $scope.user.user_id,
 			user_name: $scope.user.name
 		};
 
-	contacts_service.query({filter:{where:{email: $scope.user.contacts_kay}}})
+	contacts_service.query({user_id: $scope.user.user_id})
 		.$promise.then(function(data){
-			$scope.contacts = data;
-			$scope.ad.phone = data.phone;
+			$scope.ad.phone = data[0].phone;
 		});
 	categories_service.query()
 	    .$promise.then(function(data){
 	        $scope.categories = data;
 	    });
-
-
       
 	$scope.save_ad = function(){
-		$scope.ad.image = $scope.img_src;
+		//$scope.ad.image = $scope.img_src;
 
-		ads_service.save($scope.ad)
+		users_service.save({id: $scope.user.user_id, ads:"ads"} ,$scope.ad)
 			.$promise.then(function(data){
-				console.log(data)
 				$location.path('/profile');
 			},
 			function(data){

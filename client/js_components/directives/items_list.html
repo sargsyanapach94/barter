@@ -11,7 +11,9 @@
                     </figure>
                 </a>
             </td>
-            <td><p>{{item.message}}</p></td>
+            <td>
+                <p>{{item.message}}</p>
+            </td>
             <td>{{item.date | date:"MM/dd/yyyy "}}</td>
             <td ng-show="{{del_btn}}"><button  id="delete_ad" ng-click="delete(item.id)" title="Do you wanth remove this ad?">X</button></td>
         </tr>

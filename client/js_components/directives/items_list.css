@@ -1,8 +1,6 @@
-/*#items_list{
-	border: 1px solid;
-}*/
 #items_list table{
 	width: auto
+
 }
 #items_list table tr{
 	border:1px solid;
@@ -23,9 +21,6 @@
 	padding-left: 3px;
 	width: 100%;
 }
-/*table td:nth-child(2) p{
-	width: 100px;
-}*/
 #items_list table td:nth-child(3){
 	width: 72px;
 }

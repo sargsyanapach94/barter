@@ -1,5 +1,4 @@
 myApp.factory('fb_service', function($http, $q, users_service) {
-    
 
     window.fbAsyncInit = function() {
         FB.init({
@@ -38,22 +37,25 @@ myApp.factory('fb_service', function($http, $q, users_service) {
           var def = $q.defer();
 
           FB.login(function(res) {
+
              if (res.status == 'connected') {
-                users_service.query({filter:{where:{user_id: res.authResponse.userID}}} )
+                users_service.get({id: res.authResponse.userID})
                   .$promise.then(function(data) {
-                    if(data.length){
+                    if(data){
                       def.resolve(data);
                     }
-                    else{
-                      FB.api('/me',function(data){
+                  },
+                  function(err){
+                    console.log(err);
+
+                    FB.api('/me',function(data){
                       get_picture()
                         .then(function(img){
                           data.img_url = img.url;
                           def.reject(data);
                         })
                       
-                    })
-                    }
+                    });
                   }) 
              } 
              else {

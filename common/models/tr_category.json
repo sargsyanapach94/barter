@@ -6,7 +6,7 @@
     "validateUpsert": true
   },
   "properties": {
-    "lg_kay": {
+    "lg_key": {
       "type": "string",
       "required": true
     },
@@ -14,12 +14,19 @@
       "type": "string",
       "required": true
     },
-    "category_kay": {
+    "category_key": {
       "type": "string"
     }
   },
   "validations": [],
   "relations": {},
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
   "methods": {}
 }

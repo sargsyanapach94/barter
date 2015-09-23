@@ -1,18 +1,8 @@
 myApp.factory('contacts_service', function($resource) {
-    var url = 'http://localhost:3000/onlineBarter/contacts/';
-    var resource = $resource(url);
-
-     var services = {
-        query: function() {
-            return $http.get(url); 
-        },
-        get: function(id) {
-            return $http.get(url + 'findOne?filter[where][email]='+ id);
-        },
-        post: function(data){
-            return $http.post(url,data)
-        }
-    };
+    var url = 'http://localhost:3000/onlineBarter/users/:user_id/contacts/:contact_id',
+        resource = $resource(url, {user_id:"@user_id", contact_id:"@contact_id" });
     
+    resource.exists = $resource('http://localhost:3000/onlineBarter/contacts/:id/exists', {id:"@id"})
+
     return resource;    
 })

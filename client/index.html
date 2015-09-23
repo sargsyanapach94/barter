@@ -42,7 +42,6 @@
   <script src="js_components/services/ads_service.js"></script>
   <script src="js_components/services/categories_service.js"></script>
   <script src="js_components/services/contacts_service.js"></script>
-  <script src="js_components/services/regions_service.js"></script>
   <script src="js_components/services/users_service.js"></script>
 
   <script src="views/home/home_ctrl.js"></script>
@@ -87,7 +86,8 @@
           <form class="form-horizontal " name="updateForm"  role="form">
               <div class="form-group">
                 <div >
-                  <input class="form-control" id="inputName3" placeholder="Email" ng-model="form_info.email">
+                  <input class="form-control" ng-blur="verify_email(form_info.email)" id="inputName3" placeholder="Email" ng-model="form_info.email">
+                  <span class="warning" ng-show="email_warning">Email name is already exists, try another email name.</span>
                 </div>
               </div>
 
@@ -96,19 +96,6 @@
                   <select class="col-sm-3 col-md-3 " ng-model="form_info.country">
                     <option value="Armenia">Armenia</option>
                   </select>
-                  <!-- <select class="col-sm-3 col-md-3 col-md-offset-1 col-sm-offset-1" ng-model="form_info.district">
-                    <option value="{{item.id}}" >Kotayq</option>
-                    <option value="{{item.id}}" >Yerevan</option>
-                    <option value="{{item.id}}" >Gexarquniq</option>
-                    <option value="{{item.id}}" >Kotayq</option>
-                    <option value="{{item.id}}" >Kotayq</option>
-                    <option value="{{item.id}}" >Kotayq</option>
-                    <option value="{{item.id}}" >Kotayq</option>
-                    <option value="{{item.id}}" >Kotayq</option>
-                    <option value="{{item.id}}" >Kotayq</option>
-                    <option value="{{item.id}}" >Kotayq</option>
-                    <option value="{{item.id}}" >Kotayq</option>
-                  </select> -->
                   <input class="col-sm-3 col-md-3 col-md-offset-1 col-sm-offset-1" ng-model="form_info.district" placeholder="District"/>
                   <input class=" col-sm-4 col-md-4 col-md-offset-1 col-sm-offset-1" ng-model="form_info.city" placeholder="City"/>
                 </div>
@@ -164,7 +151,6 @@
                 <hr/>
                 <span><a href="#detals/{{item.id}}">&raquo; {{item.name}}</a></span>
               </dd>
-              <hr/>
             </dl>
           </div>
         </div>
