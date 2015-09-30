@@ -13,7 +13,7 @@ angular.module('my_app.profile', ['ngRoute'])
             		.$promise.then(function(loc){
             			$scope.contacts.country = loc[0].country;
             			$scope.contacts.district = loc[0].district;
-            		})
+            		});
     	});
 
 	$scope.request = {
