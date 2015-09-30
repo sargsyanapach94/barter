@@ -6,8 +6,8 @@
 			<tr>
 				<th><label>Category:</label></th>
 				<th>
-					<select ng-model="ad.category_key">
-						<option ng-value="item.name" ng-repeat="item in categories">{{item.name}}</option>
+					<select ng-model="ad.category_id">
+						<option ng-value="item.category_id" ng-repeat="item in tr_categories">{{item.name}}</option>
 					</select>
 				</th>
 			</tr>

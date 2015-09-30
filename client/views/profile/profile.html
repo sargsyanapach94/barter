@@ -5,11 +5,11 @@
 		<div>
 			<h3 ng-model="user.name">{{user.name}}</h3>
 			<img src="{{user.img_url}}"/>
-			<h5>{{contacts.country}} {{contacts.city}}</h5>
+			<h5>{{contacts.country}} {{contacts.district}} {{contacts.city}}</h5>
 		</div>
 	</div>
 	<div id="whole">
-		<a href="#/new_ad"><button>Create NEW AD</button></a>
-		<ads-list delete-button="true">My Ads</ads-list>
+		<a id="new_ad" href="#/new_ad">Create NEW AD</a>
+		<ads-list ads-request="request" count="count"  delete-button="true">My Ads</ads-list>
 	</div>
 </div>

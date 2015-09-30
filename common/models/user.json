@@ -22,7 +22,7 @@
     },
     "user_id": {
       "type": "string",
-      "id": 1,
+      "id":1,
       "required": true
     }
   },

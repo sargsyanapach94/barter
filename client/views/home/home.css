@@ -1,4 +1,22 @@
-/*.row{
-	position: relative;
-	overflow: hidden;
-}*/
+#languages{
+  float: right;
+  width: 50px;
+}
+
+#languages div#usa{
+	background: url('../../images/flags.png') -6px -32px;
+}
+#languages div#arm{
+	background: url('../../images/flags.png') -94px -32px;
+}
+
+#languages div.lg{
+	border-radius: 1px;
+	display: inline-table;
+	height: 13px;
+    width: 20px;
+}
+#languages div.lg:hover{
+	cursor: pointer;
+	border:1px solid ;
+}

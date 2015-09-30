@@ -15,20 +15,16 @@ angular.module('my_app.new_ad', ['ngRoute'])
 		.$promise.then(function(data){
 			$scope.ad.phone = data[0].phone;
 		});
-	categories_service.query()
-	    .$promise.then(function(data){
-	        $scope.categories = data;
-	    });
-      
+	      
 	$scope.save_ad = function(){
-		//$scope.ad.image = $scope.img_src;
+		// $scope.ad.image = $scope.img_src;
 
 		users_service.save({id: $scope.user.user_id, ads:"ads"} ,$scope.ad)
 			.$promise.then(function(data){
 				$location.path('/profile');
 			},
-			function(data){
-				console.log(data)
+			function(err){
+				console.log(err)
 			})
 	};
 });

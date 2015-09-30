@@ -1,4 +1,4 @@
-myApp.factory('fb_service', function($http, $q, users_service) {
+my_app.factory('fb_service', function($q, users_service) {
 
     window.fbAsyncInit = function() {
         FB.init({
@@ -75,6 +75,15 @@ myApp.factory('fb_service', function($http, $q, users_service) {
           return def.promise;
         },
         get_picture: get_picture,
+        get_login_status: function(){
+          var def = $q.defer();
+
+          FB.getLoginStatus(function(res) {
+            def.resolve(res);            
+           });
+
+          return def.promise;
+        },
       };
     
     return services;    

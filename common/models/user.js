@@ -3,6 +3,13 @@ var path = require('path');
 
 module.exports = function(User) {
 
+  User.validatesUniquenessOf('email');
+
+  // var InventoryDefinition = { 
+  //     id: {type: String, id: 1}, 
+  //     user_id: {type: String, id: 2}
+  //   }
+
   // // listProjects
   // User.listProjects = function(cb) {
   //   User.find({

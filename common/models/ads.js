@@ -1,5 +1,4 @@
 module.exports = function(Ad) {
-
   // item.status = function(cb) {
   //   var currentDate = new Date();
   //   var currentHour = currentDate.getHours();

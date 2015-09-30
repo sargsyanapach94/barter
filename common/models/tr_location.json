@@ -1,16 +1,16 @@
 {
-  "name": "tr_contacts",
+  "name": "tr_location",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "lg_key": {
+    "lg_id": {
       "type": "string",
       "required": true
     },
-    "contacts_key": {
+    "location_id": {
       "type": "string",
       "required": true
     },
@@ -26,7 +26,18 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "locations": {
+      "type": "belongsTo",
+      "model": "location",
+      "foreignKey": "id"
+    },
+    "languages": {
+      "type": "belongsTo",
+      "model": "language",
+      "foreignKey": ""
+    }
+  },
   "acls": [
     {
       "accessType": "WRITE",

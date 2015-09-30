@@ -1,6 +1,5 @@
 #items_list table{
-	width: auto
-
+	width: auto;
 }
 #items_list table tr{
 	border:1px solid;
@@ -10,12 +9,12 @@
 	text-align: center;
 }
 #items_list table td:first-child{
-    width: 160px;
-    height: 150px;
+    width: 155px;
+    height: 125px;
 }
 #items_list table td:first-child img{
-    width: 160px;
-    height: 120px;
+    width: 155px;
+    height: 115px;
 }
 #items_list table td:nth-child(2) {
 	padding-left: 3px;
@@ -31,4 +30,8 @@
 #items_list #delete_ad{
     font-weight: 800;
 	color: #E44B4B;
+}
+
+#items_list .odd{
+	background-color: #F5F5F5;
 }

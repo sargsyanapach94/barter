@@ -44,6 +44,10 @@
     "dataSource": "mysqlDs",
     "public": true
   },
+  "location": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
   "tr_category": {
     "dataSource": "mysqlDs",
     "public": true
@@ -56,11 +60,7 @@
     "dataSource": "mysqlDs",
     "public": true
   },
-  "tr_contacts": {
-    "dataSource": "mysqlDs",
-    "public": true
-  },
-  "tr_user": {
+  "tr_location": {
     "dataSource": "mysqlDs",
     "public": true
   }

@@ -1,0 +1,23 @@
+<div id="items_list">
+	<link rel="stylesheet" href="directives/items_list/items_list.css">
+    <table infinite-scroll='get_ads()' >
+        <h3 ng-transclude></h3>
+        <br/>{{empti_data}}
+        <tr ng-repeat="item in ads" ng-class-odd="'odd'">
+            <td >
+                <a href="#detals/{{item.id}}">
+                    <figure>
+                        <figcaption>{{item.name}}</figcaption>
+                        <!-- {{JSON.pars(item.image)}} -->
+                        <img src="#">
+                    </figure>
+                </a>
+            </td>
+            <td>
+                <p>{{item.message}}</p>
+            </td>
+            <td>{{item.date | date:"MM/dd/yyyy "}}</td>
+            <td ng-show="{{del_btn}}"><button  id="delete_ad" ng-click="delete(item.id)" title="Do you wanth to remove this ad?">X</button></td>
+        </tr>
+    </table>
+</div>

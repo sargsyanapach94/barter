@@ -10,9 +10,22 @@
 	display: inline-table;
 	width: 69%;
 }
-#whole a{
+#whole a#new_ad{
 	float: right;
-	color: #717148;
+    font-size: 16px;
+    color: #0F7182;
+    margin-right: -7px;
+    background-color: #FDFC6F;
+    border-radius: 8px;
+    margin-top: -1px;
+}
+
+#whole a#new_ad:hover{
+   text-decoration: none;
+   background-color: #C2EC0D;
+   padding: 3px;
+   font-size: 18px;
+   border-radius: 5px;
 }
 
 

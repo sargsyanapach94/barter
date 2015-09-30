@@ -9,10 +9,21 @@
     "name": {
       "type": "string",
       "required": true
+    },
+    "id":{
+      "type": "string",
+      "id": 1,
+      "required": true
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "tr_categories": {
+      "type": "hasMany",
+      "model": "tr_category",
+      "foreignKey": "category_id"
+    }
+  },
   "acls": [
     {
       "accessType": "WRITE",

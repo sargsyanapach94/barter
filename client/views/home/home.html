@@ -1,7 +1,12 @@
 <link rel="stylesheet" href="views/home/home.css">
 
 <div  ng-controller="home_ctrl">
+	<div id="languages">
+		<div id="usa" class="lg" ng-click="change_lg(1)"></div>
+		<div id="arm" class="lg" ng-click="change_lg(2)"></div>
+	</div >
+
 	<div class="row">
-		<ads-list>Last Ads</ads-list>
+		<ads-list ads-request="request" count="count">Last Ads</ads-list>
 	</div>
 </div>

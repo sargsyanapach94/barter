@@ -6,7 +6,7 @@
     "validateUpsert": true
   },
   "properties": {
-    "lg_key": {
+    "lg_id": {
       "type": "string",
       "required": true
     },
@@ -14,12 +14,24 @@
       "type": "string",
       "required": true
     },
-    "category_key": {
-      "type": "string"
+    "category_id": {
+      "type": "string",
+      "required": true
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "categories": {
+      "type": "belongsTo",
+      "model": "category",
+      "foreignKey": "id"
+    },
+    "languages": {
+      "type": "belongsTo",
+      "model": "language",
+      "foreignKey": ""
+    }
+  },
   "acls": [
     {
       "accessType": "WRITE",

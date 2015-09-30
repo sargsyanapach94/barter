@@ -11,10 +11,6 @@ body div:first-child{
   border-radius: 8px;
 }
 
-header select{
-  float: right;
-  width: 25px;
-}
 .container h1{
   margin:0;
   padding: 0;
@@ -100,7 +96,18 @@ article #left{
 #left div.row{
   margin: 0px;
 }
-
+#left div#category a{
+  font-size: 17px;
+  color: #0F7182;
+  border-radius: 5px;
+}
+#left div#category a:hover{
+  text-decoration: none;
+  background-color: #C2EC0D;
+  padding: 3px;
+  padding-left: 20px;
+  border-radius: 5px;
+}
 #left div#content{
   width: 74%;
   padding: 0;

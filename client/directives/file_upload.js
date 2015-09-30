@@ -1,4 +1,4 @@
-myApp.directive('fileUpload', function () {
+my_app.directive('fileUpload', function () {
     return {      
         restrict: 'AEC',
         template:'<input id="input" type="file" multiple="true" />'+
@@ -17,7 +17,6 @@ myApp.directive('fileUpload', function () {
 
                 for(var i=0; i < files.length; i++){
                     file = files[i];
-                    console.log(file)
                     
                     // Если в файле содержится изображение
                     if(/image.*/.test(file.type)){
@@ -32,9 +31,9 @@ myApp.directive('fileUpload', function () {
                                             
                                     
                                 if(img.complete) {
-                                    //$scope.img_src = JSON.stringify($(img)) ;
+                                    $scope.img_src = JSON.stringify(img.src) ;
 
-                                    $scope.imgs.push(img.src);
+                                    //$scope.img_src = img.src;
                                     $('#box').append(img);
                                 }
                             };
