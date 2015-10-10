@@ -97,13 +97,14 @@ article #left{
   margin: 0px;
 }
 #left div#category a{
-  font-size: 17px;
+  font-size: 15px;
   color: #0F7182;
   border-radius: 5px;
 }
 #left div#category a:hover{
   text-decoration: none;
   background-color: #C2EC0D;
+  font-size: 17px;
   padding: 3px;
   padding-left: 20px;
   border-radius: 5px;

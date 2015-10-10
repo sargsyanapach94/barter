@@ -13,7 +13,7 @@ module.exports = function(app) {
               "user_name": "Suren Sargsyan",
               "email": "sargsyanapach94@mail.ru",
               "phone": "+374 43303606",
-              "image": "",
+              "image": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRzqKPYKLogr-lhRUy-ToRbGpVumg1OUwsw1a6JnBX3Dji75n1v",
             },
             {
               "name": "Cat",

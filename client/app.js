@@ -93,7 +93,6 @@ var my_app = angular.module('my_app', [
     };
 
     $scope.get_district = function(country){
-
       locations_service.query_trunslations($rootScope.page_language_id, country)
         .$promise.then(function(data){
           $scope.location = data;
@@ -218,9 +217,9 @@ var my_app = angular.module('my_app', [
         .when('/detals/:id', {templateUrl: 'views/detals/detals.html',controller: 'detals_ctrl'})
         .when('/category/:id', {templateUrl: 'views/category/category.html',controller: 'category_ctrl'})
         .when('/new_ad', {templateUrl: 'views/new_ad/new_ad.html',controller: 'new_ad_ctrl',
-          resolve: { factory: check_routing } })
+          resolve: { load: check_routing } })
         .when('/profile', {templateUrl: 'views/profile/profile.html',controller: 'profile_ctrl',
-          resolve: { factory: check_routing } })
+          resolve: { load: check_routing } })
         .otherwise({redirectTo: '/home'});
   });
 
