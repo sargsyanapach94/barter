@@ -20,6 +20,23 @@
   "optionalDependencies": {
     "loopback-explorer": "^1.1.0"
   },
+  
+  
+   "scripts": {
+    "start": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install"
+  },
+  "cacheDirectories": [
+    "node_modules", 
+    "bower_components"
+    ],
+  "engines": {
+    "node": "4.1.1",
+    "npm": "2.1.x"
+  },
+  
+  
   "devDependencies": {
     "jshint": "^2.5.6"
   },
